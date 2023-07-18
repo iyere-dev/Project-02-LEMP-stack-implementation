@@ -34,3 +34,43 @@ Test how  the nginx server responds to requests from the internet
 
 ![nginx server response](./images/installing_ngnix/nginx_server_response.png)
 
+### Installing MYSQL DBMS
+
+Install mysql-server
+
+`sudo apt install mysql-server`
+
+![installing mysql-server](./images/installing_mysql/installing_mysql-server_page1.png)
+
+![installing mysql-server page2](./images/installing_mysql/installing_mysql-server_page2.png)
+
+Log in to mysql console
+
+`sudo mysql`
+
+run a security script that comes pre-installed with MySQL. This script will remove some insecure default settings and lock down access to your database system. Before running the script you will set a password for the root user, using mysql_native_password as default authentication method. We’re defining this user’s password as PassWord.1.
+
+set password for rooy user in mysql console by running the script below
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
+
+![setting password for root user](./images/installing_mysql/setting_password_for_root_user.png)
+
+run interactive script
+
+`sudo_mysql_secure_installation`
+
+![running interactive script](./images/installing_mysql/running_interactive_script.png)
+
+test to see if you can log in to MySQL console
+
+`sudo mysql -p`
+
+![Test log in to MySQL console](./images/installing_mysql/test_log_in%20_to_MYSQL_console.png)
+
+`exit`
+
+[exiting mysql console](./images/installing_mysql/exiting_mysql_console.png)
+
+
+
