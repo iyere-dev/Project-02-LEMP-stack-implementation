@@ -72,5 +72,15 @@ test to see if you can log in to MySQL console
 
 [exiting mysql console](./images/installing_mysql/exiting_mysql_console.png)
 
+INSTALL PHP
+
+install php packages
+
+`sudo apt install php-fpm php-mysql`
+
+![installing php packages](./images/installing_php/installing_php_packages.png)
+
+
+
 
 
