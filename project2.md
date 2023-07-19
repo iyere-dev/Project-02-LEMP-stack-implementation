@@ -80,6 +80,65 @@ install php packages
 
 ![installing php packages](./images/installing_php/installing_php_packages.png)
 
+check that php has been installed
+
+`php -v`
+
+![checking php is installed](./images/installing_php/checking_php_is_installed.png)
+
+CONFIGURE NGINX TO USE PHP PROCESSOR
+
+create domain directory (to be called projectLEMP) within server block /vaw/www/html
+
+`sudo mkdir /var/www/projectLEMP`
+
+![creating domain directory](./images/configuring_nginx_to_use_php_processor/creating_domain_directory.png)
+
+assign ownership of the directory with the $USER environment variable, which will reference your current system user
+
+`sudo chown -R $USER:$USER /var/www/projectLEMP`
+
+![assigning ownership of directory](./images/configuring_nginx_to_use_php_processor/assingning_ownwership_of_directory.png)
+
+open a new configuration file in Nginx’s sites-available directory using nano editor
+
+`sudo nano /etc/nginx/sites-available/projectLEMP`   
+
+![pasting barebones configuration](./images/configuring_nginx_to_use_php_processor/barebones_configuration.png)
+
+Activate the configuration by linking to the config file from Nginx’s sites-enabled directory
+
+`sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/`
+
+test configuration file for syntax errors
+
+`sudo nginx -t`
+
+![testing configuration for syntax errors](./images/configuring_nginx_to_use_php_processor/testing_configuration_for_syntax_errors.png)
+
+disable default nginx host that is currently configured to listen on port 80
+
+`sudo unlink /etc/nginx/sites-enabled/default`
+
+reload nginx to apply the changes
+
+`sudo systemctl reload nginx`
+
+the new website is now active, but the web root /var/www/projectLEMP is still empty. Create an index.html file in that location so that we can test that your new server block works as expected
+
+`sudo echo 'Hello LEMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html`
+
+![creating index.html file to test new server block](./images/configuring_nginx_to_use_php_processor/creating_index.html_file_to%20test_new_server_block.png)
+
+open url in browser with public IP
+
+![opening url in browser with public IP](./images/configuring_nginx_to_use_php_processor/oepning_url_in_browser.png)
+
+access website in browser with public DNS name
+
+![accessing website with public DNS name](./images/configuring_nginx_to_use_php_processor/accessing_website_with_public_DNS_name.png)
+
+
 
 
 
