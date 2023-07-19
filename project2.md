@@ -156,5 +156,68 @@ after checking information on php in the webpage, remove the info.php filr for s
 
 ![removing info.php page](./images/testing_php_with_nginx/removing_info.php_page.png)
 
+RETRIEVING DATA FROM MYSQL DATABASE WITH PHP
 
+connect to mysql console using the root account and create database (example database)
 
+`sudo mysql -p`
+
+![signing into mysql and creating example database](./images/retrieving_data_from_mysql_database_with_php/signing_into_mysql_database_and_creating_database.png)
+
+create a new user and grant him  full priviledges on the database created
+
+`CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';`
+
+![creating new user with password](./images/retrieving_data_from_mysql_database_with_php/creating_new_user_with_password.png)
+
+give the new user created permission over the example database created (This will give the example_user user full privileges over the example_database database, while preventing this user from creating or modifying other databases on your server.)
+
+![granting example user permissions](./images/retrieving_data_from_mysql_database_with_php/granting%20example_user_permissions.png)
+
+`exit`
+
+test if the new user has the proper permissions by logging in to the MySQL console again, this time using the custom user credentials
+
+`mysql -u example_user -p`
+
+![testing new user log in to mysql console](./images/retrieving_data_from_mysql_database_with_php/testing_new_user_login.png)
+
+confirm access to database
+
+`SHOW DATABASES;`
+
+![confirming access to database](./images/retrieving_data_from_mysql_database_with_php/confirming_database_access.png)
+
+create test table called todo_list
+
+`CREATE TABLE example_database.todo_list (item_id INT AUTO_INCREMENT,content VARCHAR(255),PRIMARY KEY(item_id));`
+
+![creating tabled named todo_list](./images/retrieving_data_from_mysql_database_with_php/creating_table.png)
+
+Insert a few rows of content in the test table
+
+![inserting rows of content](./images/retrieving_data_from_mysql_database_with_php/inserting_rows_of_content.png)
+
+confirm that the data was successfully saved to the table
+
+`SELECT * FROM example_database.todo_list;`
+
+![confirming data was successfully saved to table](./images/retrieving_data_from_mysql_database_with_php/confirming%20_data_saved.png)
+
+exit mysql console
+
+`exit`
+
+Now you can create a PHP script that will connect to MySQL and query for your content. Create a new PHP file in your custom web root directory using your preferred editor. We’ll use nano for that
+
+`nano /var/www/projectLEMP/todo_list.php`
+
+![saving barebones config with nano editor](./images/retrieving_data_from_mysql_database_with_php/saving_barebones_config.png)
+
+access page in web browser
+
+[accessing page in web browser](http://3.126.207.206/todo_list.php)
+
+[todo_list page in web browser](./images/retrieving_data_from_mysql_database_with_php/accessing_todo_list_in_browser.png)
+
+END OF PROJECT!
