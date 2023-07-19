@@ -138,8 +138,23 @@ access website in browser with public DNS name
 
 ![accessing website with public DNS name](./images/configuring_nginx_to_use_php_processor/accessing_website_with_public_DNS_name.png)
 
+TESTING PHP WITH NGINX
 
+create test PHP file
 
+`sudo nano /var/www/projectLEMP/info.php`
+
+![pasting barbones config in php file created](./images/testing_php_with_nginx/pasting_barebones_configuration_in_php_file.png)
+
+access info.php page with browser
+
+![accessing info.php page with browser](./images/testing_php_with_nginx/accessing_info.php_page%20_with_browser.png)
+
+after checking information on php in the webpage, remove the info.php filr for security reasons as it containd sensitive information
+
+`sudo rm /var/www/projectLEMP/info.php`
+
+![removing info.php page](./images/testing_php_with_nginx/removing_info.php_page.png)
 
 
 
